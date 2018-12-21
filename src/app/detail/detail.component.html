@@ -1,0 +1,27 @@
+<h3 *ngIf="show" class="title">Detail Page</h3>
+
+<div class="box" [class.opened]="show">
+  <form [formGroup]="detailForm" (ngSubmit)="onSubmit()">
+    <div class="container">
+      <label>
+        callId:
+        <input type="text" formControlName="callId" readonly>
+      </label>
+      <label>
+        callStart:
+        <input type="text" formControlName="callStart" readonly>
+      </label>
+      <button type="submit" title="save records" [disabled]="!detailForm.valid">Save</button>
+    </div>
+    <div class="container">
+      <label>
+        *agent:
+        <input type="text" formControlName="agent" required>
+      </label>
+      <label>
+        *wrapupName:
+        <input type="text" formControlName="wrapupName" required>
+      </label>
+    </div>
+  </form>
+</div>

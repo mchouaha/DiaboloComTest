@@ -1,0 +1,61 @@
+label {
+  display: block;
+  width: 6em;
+  margin: .5em 0;
+  color: #607D8B;
+  font-weight: bold;
+}
+
+input {
+  height: 2em;
+  font-size: 1em;
+  padding-left: .4em;
+}
+
+button {
+  font-family: Arial;
+  background-color: #eee;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #cfd8dc;
+  }
+  &:disabled {
+    background-color: #eee;
+    color: #ccc;
+    cursor: auto;
+  }
+}
+form {
+  border:1px solid #607D8B;
+  position: fixed;
+  top: 40%;
+  left: 40%;
+  width: 230px;
+  padding: 20px;
+}
+/deep/ .mat-spinner circle {
+  stroke: black;
+  strokeWidth: 20px;
+}
+.spinner {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+.error {
+  margin-left: 20px;
+  color: red;
+  font-size: 12px;
+}
+.invalid {
+  width: 100%;
+  margin-top: 0.25rem;
+  font-size: 60%;
+  color: #dc3545;
+}
+
+

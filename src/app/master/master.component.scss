@@ -1,0 +1,46 @@
+table {
+  width: 100%;
+}
+mat-icon {
+  position: absolute;
+  right:5px;
+  top:10px;
+  cursor: pointer;
+}
+.mat-row {
+  &:hover
+  {
+    background-color: #eee;
+    color: #ccc;
+    cursor: pointer;
+  }
+}
+
+.d-inline-block {
+  position: absolute;
+  top: 0px;
+  right: 1px;
+}
+.dropdown-menu {
+  padding: 0;
+}
+
+.menuDropDown {
+  background-color: #eee;
+  cursor: pointer;
+  .dropdown-item {
+    span {
+      font-weight: bold;
+    }
+  }
+}
+button.logout {
+  cursor: pointer;
+}
+.spinner {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+
+
