@@ -20,6 +20,7 @@ export class MasterService {
     return this.http.get<any>(`${environment.apiUrl}/Calls`, {
       headers: this.headers });
   }
+
   replaceCall(newModel:Object): Observable<any> {
     return this.http.put<any>(`${environment.apiUrl}/Calls`, newModel, {
       headers: this.headers });

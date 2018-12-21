@@ -41,6 +41,6 @@ export class LoginComponent implements OnInit {
     (resp: HttpErrorResponse) => {
       this.submitted = false;
       this.error = resp.statusText;
-  });
+    });
   }
 }

@@ -37,20 +37,24 @@ form {
   width: 230px;
   padding: 20px;
 }
+
 /deep/ .mat-spinner circle {
   stroke: black;
   strokeWidth: 20px;
 }
+
 .spinner {
   position: absolute;
   bottom: 10px;
   right: 10px;
 }
+
 .error {
   margin-left: 20px;
   color: red;
   font-size: 12px;
 }
+
 .invalid {
   width: 100%;
   margin-top: 0.25rem;

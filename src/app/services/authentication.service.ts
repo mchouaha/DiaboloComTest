@@ -38,13 +38,7 @@ export class AuthenticationService {
   }
 
   logout():void  {
-      // this.headers = new HttpHeaders({
-      //     'Content-Type': 'application/json',
-      //     'Accept': 'application/json',
-      //     'Authorization': JSON.parse(localStorage.getItem('userobj')).id
-      // });
       localStorage.removeItem('userobj');
       localStorage.removeItem('username');
-      // return this.http.post<any>(`${environment.apiUrl}/Users/logout`, null, {headers: this.headers});
   }
 }
