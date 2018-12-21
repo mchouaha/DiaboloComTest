@@ -3,7 +3,7 @@
 <div ngbDropdown placement="bottom-right" class="d-inline-block">
   <mat-icon title="menu" ngbDropdownToggle>menu</mat-icon>
   <div class="menuDropDown"ngbDropdownMenu >
-    <button class="dropdown-item">login as <span>{{username}}</span></button>
+    <button class="dropdown-item" disabled>login as <span>{{username}}</span></button>
     <button class="dropdown-item logout" (click)="logout()">logout</button>
   </div>
 </div>
@@ -11,7 +11,7 @@
 <table mat-table [dataSource]="callsObs$|async " class="mat-elevation-z8">
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;" title="click to edit" (click)="editCard(row)"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;" title="click to edit" (click)="openDetailModal(row)"></tr>
 
   <!-- callId Column -->
   <ng-container matColumnDef="position">
@@ -45,6 +45,6 @@
 
 </table>
 
-<app-detail [call]="call" ></app-detail>
+<!--<app-detail [call]="call" ></app-detail>-->
 
 <mat-spinner *ngIf="!loaded" class="spinner" [diameter]="30"></mat-spinner>

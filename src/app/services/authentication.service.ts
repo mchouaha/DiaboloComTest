@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { filter, map } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
-import {Observable} from 'rxjs';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -12,12 +12,12 @@ export class AuthenticationService {
   private headers = new HttpHeaders({
     'Content-Type': 'application/json',
     'Accept': 'application/json',
-});
+  });
 
   constructor(private http: HttpClient) { }
 
   getToken() {
-      return localStorage.getItem("userObj")
+      return localStorage.getItem("userobj")
   }
 
   isAuthenticated(): boolean {
@@ -27,18 +27,24 @@ export class AuthenticationService {
   login(username: string, password: string):Observable {
     return this.http.post<any>(`${environment.apiUrl}/Users/login`, { username: username, password: password }, {headers: this.headers})
       .pipe(
-          filter(user => user),
+        filter(user => user),
         map(user => {
         if (user) {
-          localStorage.setItem('userObj', JSON.stringify(user));
-          localStorage.setItem('username', username);
+            localStorage.setItem('userobj', JSON.stringify(user));
+            localStorage.setItem('username', username);
         }
         return user;
       }));
   }
 
-  logout():void {
-    localStorage.removeItem('userObj');
-    localStorage.removeItem('username');
+  logout():Observable  {
+      this.headers = new HttpHeaders({
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          'Authorization': JSON.parse(localStorage.getItem('userobj')).id
+      });
+      localStorage.removeItem('userobj');
+      localStorage.removeItem('username');
+      return this.http.post<any>(`${environment.apiUrl}/Users/logout`, null, {headers: this.headers});
   }
 }

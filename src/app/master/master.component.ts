@@ -3,6 +3,8 @@ import { MasterService } from '../services/master.service';
 import { Observable } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthenticationService } from '../services/authentication.service';
+import { MatDialog } from '@angular/material';
+import { DetailComponent } from '../detail/detail.component';
 
 @Component({
   selector: 'app-home',
@@ -20,7 +22,8 @@ export class MasterComponent implements OnInit {
   constructor(private masterService: MasterService,
               private route: ActivatedRoute,
               private authenticationService: AuthenticationService,
-              private router: Router) { }
+              private router: Router,
+              public dialog: MatDialog) { }
 
   ngOnInit() {
     this.loaded = false;
@@ -33,12 +36,17 @@ export class MasterComponent implements OnInit {
     });
   }
 
-  editCard(call):void {
+  openDetailModal(call):void {
     this.call = call;
+    const dialogRef = this.dialog.open(DetailComponent, {
+      width: '100vw',
+      data: {call: this.call}
+    });
+    dialogRef.afterClosed().subscribe();
   }
 
   logout():void {
-    this.authenticationService.logout();
+    this.authenticationService.logout().subscribe();
     this.router.navigate(['login']);
   }
 }

@@ -1,16 +1,14 @@
-import { Component, Input, OnChanges, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MasterService } from '../services/master.service';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/';
 
 @Component({
   selector: 'app-detail',
   templateUrl: './detail.component.html',
   styleUrls: ['./detail.component.scss'],
 })
-export class DetailComponent implements OnInit, OnChanges {
-
-  @Input() call:any;
-  private show:boolean;
+export class DetailComponent implements OnInit {
 
   detailForm = new FormGroup({
     callId: new FormControl('', Validators.required),
@@ -19,29 +17,30 @@ export class DetailComponent implements OnInit, OnChanges {
     wrapupName: new FormControl('', Validators.required)
   });
 
-  constructor(private masterService: MasterService) {};
+  constructor(private masterService: MasterService,
+              public dialogRef: MatDialogRef<DetailComponent>,
+              @Inject(MAT_DIALOG_DATA) public data: any
+              ) {};
 
   ngOnInit() {
-    this.show = false;
-  }
-
-  ngOnChanges(changes) {
-    if(changes.call.currentValue) {
-      this.show = true;
-      this.detailForm.setValue({
-        callId:[this.call.callId],
-        callStart:[this.call.callStart],
-        agent:[this.call.callWrapups[0].agent.login],
-        wrapupName:[this.call.callWrapups[0].wrapupName]
-      })
-    }
+    this.detailForm.setValue({
+          callId:[this.data.call.callId],
+          callStart:[this.data.call.callStart],
+          agent:[this.data.call.callWrapups[0].agent.login],
+          wrapupName:[this.data.call.callWrapups[0].wrapupName]
+        })
   }
 
   onSubmit():void {
-    this.call.callId = this.detailForm.value.callId;
-    this.call.callStart = this.detailForm.value.callStart;
-    this.call.callWrapups[0].agent.login = this.detailForm.value.agent;
-    this.call.callWrapups[0].wrapupName = this.detailForm.value.wrapupName;
-    this.masterService.replaceCall(this.call).subscribe();
+    this.data.call.callId = this.detailForm.value.callId;
+    this.data.call.callStart = this.detailForm.value.callStart;
+    this.data.call.callWrapups[0].agent.login = this.detailForm.value.agent;
+    this.data.call.callWrapups[0].wrapupName = this.detailForm.value.wrapupName;
+    this.masterService.replaceCall(this.data.call).subscribe();
+    this.onNoClick();
+  }
+
+  onNoClick(): void {
+    this.dialogRef.close();
   }
 }

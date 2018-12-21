@@ -1,12 +1,14 @@
 table {
   width: 100%;
 }
+
 mat-icon {
   position: absolute;
   right:5px;
   top:10px;
   cursor: pointer;
 }
+
 .mat-row {
   &:hover
   {
@@ -21,22 +23,29 @@ mat-icon {
   top: 0px;
   right: 1px;
 }
+
 .dropdown-menu {
   padding: 0;
 }
 
 .menuDropDown {
-  background-color: #eee;
   cursor: pointer;
   .dropdown-item {
+    background-color: #eee;
+    &:hover
+    {
+      color: deepskyblue;
+    }
     span {
       font-weight: bold;
     }
   }
 }
+
 button.logout {
   cursor: pointer;
 }
+
 .spinner {
   position: absolute;
   bottom: 10px;
