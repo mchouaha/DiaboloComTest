@@ -33,10 +33,8 @@ export class LoginComponent implements OnInit {
 
     if (this.loginForm.invalid) { return; }
 
-    this.authenticationService.login(this.form.username.value, this.form.password.value).subscribe(
-    user =>
+    this.authenticationService.login(this.form.username.value, this.form.password.value).subscribe(() =>
     {
-      console.log(user);
       this.submitted = false;
       this.router.navigate(['master']);
     },

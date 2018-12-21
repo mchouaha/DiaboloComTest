@@ -28,7 +28,6 @@ export class DetailComponent implements OnInit, OnChanges {
   ngOnChanges(changes) {
     if(changes.call.currentValue) {
       this.show = true;
-      console.log(this.call);
       this.detailForm.setValue({
         callId:[this.call.callId],
         callStart:[this.call.callStart],

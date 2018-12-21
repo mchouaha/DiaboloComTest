@@ -25,7 +25,7 @@ export class MasterService {
     }).pipe(
        tap( // Log the result or error
         // data => console.log(data),
-        error => console.log(error)
+        // error => console.log(error)
           )
       );
   }
@@ -35,7 +35,7 @@ export class MasterService {
     }).pipe(
         tap( // Log the result or error
             // data => console.log(data),
-            error => console.log(error)
+            // error => console.log(error)
         )
     );
   }
