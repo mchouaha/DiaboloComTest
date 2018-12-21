@@ -46,7 +46,7 @@ export class MasterComponent implements OnInit {
   }
 
   logout():void {
-    this.authenticationService.logout().subscribe();
+    this.authenticationService.logout();
     this.router.navigate(['login']);
   }
 }
