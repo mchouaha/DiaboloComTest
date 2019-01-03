@@ -12,14 +12,14 @@ import { HttpErrorResponse } from '@angular/common/http';
 export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
-  submitted:boolean;
-  error:string;
+  submitted: boolean;
+  error: string;
 
   constructor(private authenticationService: AuthenticationService,
               private router: Router) {}
 
   ngOnInit() {
-    this.submitted= false;
+    this.submitted = false;
     this.loginForm = new FormGroup({
       username: new FormControl('', Validators.required),
       password: new FormControl('', Validators.required),

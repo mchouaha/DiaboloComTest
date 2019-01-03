@@ -17,7 +17,7 @@ export class AuthenticationService {
   constructor(private http: HttpClient) { }
 
   getToken() {
-      return localStorage.getItem("userobj")
+      return localStorage.getItem('userobj');
   }
 
   isAuthenticated(): boolean {
@@ -37,7 +37,7 @@ export class AuthenticationService {
       }));
   }
 
-  logout():void  {
+  logout(): void  {
       localStorage.removeItem('userobj');
       localStorage.removeItem('username');
   }

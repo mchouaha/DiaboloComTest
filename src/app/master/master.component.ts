@@ -17,7 +17,7 @@ export class MasterComponent implements OnInit {
   public displayedColumns: string[];
   private username: string;
   public call: Object;
-  private loaded:boolean;
+  private loaded: boolean;
 
   constructor(private masterService: MasterService,
               private route: ActivatedRoute,
@@ -28,7 +28,7 @@ export class MasterComponent implements OnInit {
   ngOnInit() {
     this.loaded = false;
     this.displayedColumns = ['position', 'callId', 'callStart', 'agent', 'wrapupName'];
-    this.username = localStorage.getItem("username")
+    this.username = localStorage.getItem('username')
     this.callsObs$ = this.masterService.getAllCalls();
     this.callsObs$.subscribe(resp=>{
       if(resp)
@@ -36,7 +36,7 @@ export class MasterComponent implements OnInit {
     });
   }
 
-  openDetailModal(call):void {
+  openDetailModal(call): void {
     this.call = call;
     const dialogRef = this.dialog.open(DetailComponent, {
       width: '100vw',
@@ -45,7 +45,7 @@ export class MasterComponent implements OnInit {
     dialogRef.afterClosed().subscribe();
   }
 
-  logout():void {
+  logout(): void {
     this.authenticationService.logout();
     this.router.navigate(['login']);
   }

@@ -1,4 +1,4 @@
-<h3 mat-dialog-title class="title">Detail Page</h3>
+<div mat-dialog-title class="title">Detail Page</div>
 
 <form mat-dialog-content [formGroup]="detailForm" (ngSubmit)="onSubmit()">
   <div class="container">
@@ -22,6 +22,7 @@
     </label>
   </div>
   <div mat-dialog-actions class="actionButtons">
+    <button mat-button type="button" (click)="closeModal()" title="close modal" >Close</button>
     <button mat-button type="submit" title="save records" >Save</button>
   </div>
 </form>
