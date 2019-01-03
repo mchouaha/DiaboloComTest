@@ -32,8 +32,6 @@ export class DetailComponent implements OnInit {
   }
 
   onSubmit(): void {
-    this.data.call.callId = this.detailForm.value.callId;
-    this.data.call.callStart = this.detailForm.value.callStart;
     this.data.call.callWrapups[0].agent.login = this.detailForm.value.agent;
     this.data.call.callWrapups[0].wrapupName = this.detailForm.value.wrapupName;
     this.masterService.replaceCall(this.data.call).subscribe();
