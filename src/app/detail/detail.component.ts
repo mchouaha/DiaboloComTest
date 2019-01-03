@@ -20,7 +20,11 @@ export class DetailComponent implements OnInit {
   constructor(private masterService: MasterService,
               public dialogRef: MatDialogRef<DetailComponent>,
               @Inject(MAT_DIALOG_DATA) public data: any
-              ) {}
+              ) {
+      dialogRef.beforeClosed().subscribe(_ => {
+          dialogRef.close();
+      });
+  }
 
   ngOnInit() {
     this.detailForm.setValue({
