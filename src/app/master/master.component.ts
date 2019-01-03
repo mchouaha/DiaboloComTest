@@ -38,8 +38,8 @@ export class MasterComponent implements OnInit {
 
   openDetailModal(call): void {
     this.call = call;
-    const dialogRef = this.dialog.open(DetailComponent, {
-      width: '100vw',
+    let dialogRef = this.dialog.open(DetailComponent, {
+      width: '60vw',
       data: {call: this.call}
     });
     dialogRef.afterClosed().subscribe();
