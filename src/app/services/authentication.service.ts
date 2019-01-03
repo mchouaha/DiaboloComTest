@@ -24,7 +24,7 @@ export class AuthenticationService {
       return this.getToken() !== null;
   }
 
-  login(username: string, password: string):Observable<any> {
+  login(username: string, password: string): Observable<any> {
     return this.http.post<any>(`${environment.apiUrl}/Users/login`, { username: username, password: password }, {headers: this.headers})
       .pipe(
         filter(user => user),

@@ -20,15 +20,15 @@ export class DetailComponent implements OnInit {
   constructor(private masterService: MasterService,
               public dialogRef: MatDialogRef<DetailComponent>,
               @Inject(MAT_DIALOG_DATA) public data: any
-              ) {};
+              ) {}
 
   ngOnInit() {
     this.detailForm.setValue({
-          callId:[this.data.call.callId],
-          callStart:[this.data.call.callStart],
-          agent:[this.data.call.callWrapups[0].agent.login],
-          wrapupName:[this.data.call.callWrapups[0].wrapupName]
-        })
+          callId: [this.data.call.callId],
+          callStart: [this.data.call.callStart],
+          agent: [this.data.call.callWrapups[0].agent.login],
+          wrapupName: [this.data.call.callWrapups[0].wrapupName]
+        });
   }
 
   onSubmit(): void {

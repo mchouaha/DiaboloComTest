@@ -28,18 +28,20 @@ export class MasterComponent implements OnInit {
   ngOnInit() {
     this.loaded = false;
     this.displayedColumns = ['position', 'callId', 'callStart', 'agent', 'wrapupName'];
-    this.username = localStorage.getItem('username')
+    this.username = localStorage.getItem('username');
     this.callsObs$ = this.masterService.getAllCalls();
-    this.callsObs$.subscribe(resp=>{
-      if(resp)
+    this.callsObs$.subscribe(resp => {
+      if (resp) {
         this.loaded = true;
+      }
+
     });
   }
 
   openDetailModal(call): void {
     this.call = call;
-    let dialogRef = this.dialog.open(DetailComponent, {
-      width: '60vw',
+    const dialogRef = this.dialog.open(DetailComponent, {
+      width: '100vw',
       data: {call: this.call}
     });
     dialogRef.afterClosed().subscribe();

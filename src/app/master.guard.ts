@@ -9,14 +9,14 @@ import { AuthenticationService } from './services/authentication.service';
 export class MasterGuard implements CanActivate {
 
   constructor(private authenticationService: AuthenticationService,
-              private router: Router){
+              private router: Router) {
   }
 
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
 
-    if(this.authenticationService.isAuthenticated()){
+    if (this.authenticationService.isAuthenticated()) {
       return true;
     } else {
       this.router.navigate(['/login']);

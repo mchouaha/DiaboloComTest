@@ -27,14 +27,13 @@ export class LoginComponent implements OnInit {
   }
   get form() { return this.loginForm.controls; }
 
-  onSubmit():void {
+  onSubmit(): void {
     this.submitted = true;
-    this.error = "";
+    this.error = '';
 
     if (this.loginForm.invalid) { return; }
 
-    this.authenticationService.login(this.form.username.value, this.form.password.value).subscribe(() =>
-    {
+    this.authenticationService.login(this.form.username.value, this.form.password.value).subscribe(() => {
       this.submitted = false;
       this.router.navigate(['master']);
     },

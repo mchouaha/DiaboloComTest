@@ -21,7 +21,7 @@ export class MasterService {
       headers: this.headers });
   }
 
-  replaceCall(newModel:Object): Observable<any> {
+  replaceCall(newModel: Object): Observable<any> {
     return this.http.put<any>(`${environment.apiUrl}/Calls`, newModel, {
       headers: this.headers });
   }
