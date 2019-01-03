@@ -41,7 +41,7 @@ export class MasterComponent implements OnInit {
   openDetailModal(call): void {
     this.call = call;
     const dialogRef = this.dialog.open(DetailComponent, {
-      width: '60vw',
+      width: '40vw',
       data: {call: this.call},
       hasBackdrop: true
     });
